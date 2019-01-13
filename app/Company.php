@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
 
-	// relataion one to many
+	  // relataion one to many
     public function Banners(){
     	return $this->hasMany(Banner::class);
     }
