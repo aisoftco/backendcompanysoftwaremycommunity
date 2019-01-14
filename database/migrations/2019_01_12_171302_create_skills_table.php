@@ -15,9 +15,11 @@ class CreateSkillsTable extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->string('logo');
             $table->mediumText('tecnology');
+            $table->softDeletes();
+            $table->timestamps();
+            
         });
     }
 

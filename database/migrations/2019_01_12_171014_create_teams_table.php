@@ -21,15 +21,16 @@ class CreateTeamsTable extends Migration
             $table->string('position',128);
             $table->string('network',128);
             $table->string('description',128);
-            $table->timestamps();
-
-            // relations
             
+            // relations
             $table->integer('company_id')->unsigned();
 
             $table->foreign('company_id')
               ->references('id')->on('companies')
               ->onDelete('cascade')->onUpdate('cascade');
+            $table->softDeletes();
+            $table->timestamps();
+  
         });
     }
 

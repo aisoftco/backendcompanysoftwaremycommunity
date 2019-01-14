@@ -15,18 +15,20 @@ class CreateServiceDetailsTable extends Migration
     {
         Schema::create('service_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->string('tittle',128);
             $table->text('description');
             $table->string('image');
 
             // relations
 
-            $table->integer('services_id')->unsigned();
+            $table->integer('service_id')->unsigned();
 
-            $table->foreign('services_id')
+            $table->foreign('service_id')
               ->references('id')->on('services')
               ->onDelete('cascade')->onUpdate('cascade');
+            
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

@@ -18,7 +18,7 @@ class CreateBannersTable extends Migration
             $table->string('tittle',128);
             $table->text('description');
             $table->string('image');
-            $table->timestamps();
+            
 
             // relations
             
@@ -27,7 +27,9 @@ class CreateBannersTable extends Migration
             $table->foreign('company_id')
               ->references('id')->on('companies')
               ->onDelete('cascade')->onUpdate('cascade');
-
+            
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

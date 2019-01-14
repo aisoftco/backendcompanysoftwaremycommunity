@@ -13,7 +13,7 @@ class CreateSkillTeamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('skill_teams', function (Blueprint $table) {
+        Schema::create('skill_team', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedDecimal('porcentage_skill', 8, 2);
             $table->timestamps();

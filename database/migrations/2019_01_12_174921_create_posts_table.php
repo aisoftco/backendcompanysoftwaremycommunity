@@ -15,7 +15,6 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->string('tittle',128);
             $table->string('summary',100)->unique();
             $table->text('description');
@@ -28,6 +27,9 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')
               ->references('id')->on('users')
               ->onDelete('cascade')->onUpdate('cascade');
+            
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

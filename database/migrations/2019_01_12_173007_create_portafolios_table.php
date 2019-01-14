@@ -15,7 +15,6 @@ class CreatePortafoliosTable extends Migration
     {
         Schema::create('portafolios', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->string('project_name',128);
             $table->text('description');
             $table->string('image');
@@ -28,6 +27,9 @@ class CreatePortafoliosTable extends Migration
             $table->foreign('company_id')
               ->references('id')->on('companies')
               ->onDelete('cascade')->onUpdate('cascade');
+            
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

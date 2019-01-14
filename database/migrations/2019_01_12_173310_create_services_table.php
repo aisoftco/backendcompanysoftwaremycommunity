@@ -15,7 +15,6 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->text('description');
             $table->string('image');
 
@@ -26,6 +25,9 @@ class CreateServicesTable extends Migration
             $table->foreign('user_id')
               ->references('id')->on('users')
               ->onDelete('cascade')->onUpdate('cascade');
+
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

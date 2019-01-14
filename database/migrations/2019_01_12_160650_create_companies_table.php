@@ -23,6 +23,7 @@ class CreateCompaniesTable extends Migration
             $table->string('image_mission')->nullable();
             $table->string('email',128)->unique();
             $table->string('link_facebook');
+            $table->softDeletes();
             $table->timestamps();
             // agregar la relacion con clients segun el diagrama
         });

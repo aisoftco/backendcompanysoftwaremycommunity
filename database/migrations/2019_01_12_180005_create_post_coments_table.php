@@ -16,7 +16,6 @@ class CreatePostComentsTable extends Migration
         Schema::create('post_coments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('message',128);
-            $table->timestamps();
             $table->dateTime('date_coment');
 
 
@@ -27,6 +26,9 @@ class CreatePostComentsTable extends Migration
             $table->foreign('post_id')
               ->references('id')->on('posts')
               ->onDelete('cascade')->onUpdate('cascade');
+            
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

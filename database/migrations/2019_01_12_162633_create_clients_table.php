@@ -22,16 +22,14 @@ class CreateClientsTable extends Migration
             $table->string('state',128);
             $table->string('zip_code',10)->nullable();
             $table->string('email',128)->unique();
-            $table->timestamps();
-
+            
             // relations
-
             $table->integer('company_id')->unsigned();
-
             $table->foreign('company_id')
               ->references('id')->on('companies')
               ->onDelete('cascade')->onUpdate('cascade');
-
+            $table->softDeletes();
+            $table->timestamps();
 
         });
 

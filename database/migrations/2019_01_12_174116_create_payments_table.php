@@ -15,7 +15,6 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->string('card_number');
             $table->dateTime('expiration_date_card');
             $table->string('name_card');
@@ -30,6 +29,9 @@ class CreatePaymentsTable extends Migration
               ->onDelete('cascade')->onUpdate('cascade');
 
             // habra relacion con el servicio ?
+
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
