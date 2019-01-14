@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
 {
-
     use SoftDeletes;
     protected $table = 'companies';
     protected $fillable = [
@@ -16,16 +15,14 @@ class Company extends Model
         'description_view',
         'description_mission',
         'image_view',
-        'image_vission',
+        'image_mission',
         'email',
         'link_facebook'
     ];
     protected $dates = ['deleted_at'];
-
-
-	// relataion one to many
-    public function banners(){
-    	return $this->hasMany('App\Banner');
+	  // relataion one to many
+    public function Banners(){
+    	return $this->hasMany(Banner::class);
     }
 
     // relataion one to many

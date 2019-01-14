@@ -19,9 +19,10 @@ class Team extends Model
         'company_id'
     ];
     protected $dates = ['deleted_at'];
+    // relataion many to many
+  public function Skills(){
+    return $this->belongsToMany(Skill::class);
+  }
 
-    public function company(){
-        return $this->belongsTo('App\Company');
-    }
 
 }
