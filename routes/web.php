@@ -19,3 +19,10 @@ Route::get('/', function () {
 Route::get('admin', function(){
 	return view('admin.dashboard');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// controller to company
+Route::get('admin/company', 'CompanyController@index')->name('company');//->middleware('auth');

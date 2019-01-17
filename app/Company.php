@@ -18,8 +18,10 @@ class Company extends Model
         'image_mission',
         'email',
         'link_facebook'
+
     ];
     protected $dates = ['deleted_at'];
+
 	  // relataion one to many
     public function Banners(){
     	return $this->hasMany(Banner::class);

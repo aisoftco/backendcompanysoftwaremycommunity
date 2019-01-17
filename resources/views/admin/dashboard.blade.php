@@ -500,4 +500,4 @@
      <!-- right col -->
    </div>
    <!-- /.row (main row) -->
-@stop
+@endsection
