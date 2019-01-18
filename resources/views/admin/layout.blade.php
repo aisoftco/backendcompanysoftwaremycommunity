@@ -3,10 +3,11 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html>
+<html lang="{{ app()->getLocale() }}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="_token" content="{{csrf_token()}}" />
   <title>Index</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -261,14 +262,14 @@ desired effect
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MAIN NAVIGATION</li>
           <li class="active treeview">
-            <a href="#">
+            <a >
               <i class="fa fa-dashboard"></i> <span>Catalogs</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Company </a></li>
+              <li class="active"><a href="{{ route('company.index') }}"><i class="fa fa-circle-o"></i> Company </a></li>
               <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Users </a></li>
               <li><a href="index2.html"><i class="fa fa-circle-o"></i> Teams</a></li>
             </ul>
@@ -422,6 +423,6 @@ desired effect
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
-
+@yield('scripts')
 </body>
 </html>
