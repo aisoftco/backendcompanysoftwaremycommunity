@@ -2,6 +2,7 @@
 
 @section('content')
 
+
      <!-- /.box -->
        <!-- general form elements disabled -->
        <div class="box box-warning">
