@@ -36,11 +36,17 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
       if($request->ajax()){
-        
-        return response()->json([
-            'name' => 'Abigail',
-            'state' => 'CA'
-          ]);
+        /*
+        $data = [
+            'view' => $request['view'],
+            'description_view' => $request['description_view'],
+            'mission' => $request['mission'],
+            'description_mission' => $request['description_mission'],
+            'email' => $request['email'],
+            'link_facebook' => $request['link_facebook']
+        ];*/
+        Company::create($request->all());
+        return response()->json( $data );
       }
 
     }
