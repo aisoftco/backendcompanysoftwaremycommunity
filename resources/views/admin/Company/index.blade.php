@@ -1,15 +1,22 @@
 @extends('admin.layout')
 
 @section('content')
-
-     <!-- /.box -->
-       <!-- general form elements disabled -->
-       <div class="box box-warning">
+	
+	<div class="box box-warning">
          <div class="box-header with-border">
            <h3 class="box-title">Company Information</h3>
          </div>
+		<div class="col-md-6">
+			<a class="btn btn-primary" href="{{ route('company.create')  }}"> New Company</a>
+		</div>
+	</div>
+
+	<!-- /.box -->
+       <!-- general form elements disabled -->
+    
+        
          <!-- /.box-header -->
-         <div class="box-body">
+         <div class="box-body col-md-12">
            <form role="form"   id="FormSaveCompany" enctype="multipart/form-data">
              <!-- text input -->
              <!--
@@ -68,48 +75,87 @@
             </div>
 
             <div class="col-md-6">
-               <input type="submit" class=" btn btn-primary" name="save" value="Guardar">
+               <a href=" " class=" btn btn-warning"  >Edit Company</a>
             </div>
 
          </div>
          <!-- /.box-body -->
-       </div>
-       <!-- /.box -->
+
+
+          <!-- /.box-header -->
+            <div class="box-body">
+              <table id="tableCompany" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Rendering engine</th>
+                  <th>Browser</th>
+                  <th>Platform(s)</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Trident</td>
+                  <td>Internet
+                    Explorer 4.0
+                  </td>
+                  <td>Win 95+</td>
+                  <td> 4</td>
+                  <td>X</td>
+                </tr>
+                <tr>
+                  <td>Trident</td>
+                  <td>Internet
+                    Explorer 5.0
+                  </td>
+                  <td>Win 95+</td>
+                  <td>5</td>
+                  <td>C</td>
+                </tr>
+                <tr>
+                  <td>Trident</td>
+                  <td>Internet
+                    Explorer 5.5
+                  </td>
+                  <td>Win 95+</td>
+                  <td>5.5</td>
+                  <td>A</td>
+                </tr>
+                 
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Rendering engine</th>
+                  <th>Browser</th>
+                  <th>Platform(s)</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+    
 @endsection
+
 @section('scripts')
   <script type="text/javascript">
-  (function() {
-
+ (function() {
+ 		 $('#tableCompany').DataTable()
+         $('#example2').DataTable({
+          'paging'      : true,
+          'lengthChange': false,
+          'searching'   : false,
+          'ordering'    : true,
+          'info'        : true,
+          'autoWidth'   : false
+        })
          
 
-         const form = $("#FormSaveCompany");
-
-         form.on('submit', function(evt){
-           evt.preventDefault();
-           $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                 url: "{{ route('company.store') }}",
-                 method: 'post',
-                 data:  new FormData(this),
-                 contentType: false,
-                 processData:false,
-                 success: function(result){
-
-                    alert(result.view);
-
-                },
-                error: function(e){
-                  console.log(e)
-                }});
-
-
-         });
-
+       
    })();
   </script>
 @endsection
