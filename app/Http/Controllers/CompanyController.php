@@ -14,7 +14,7 @@ class CompanyController extends Controller
     public function index()
     {
        $company = Company::all();
-       return  view("Admin.Company.index", [ 'company' => $company] );
+       return  view("admin.Company.index", [ 'company' => $company] );
     }
 
     /**
@@ -24,7 +24,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-      return view("Admin.Company.create");;
+      return view("admin.Company.create");;
     }
 
     /**

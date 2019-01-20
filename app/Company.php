@@ -22,6 +22,11 @@ class Company extends Model
     ];
     protected $dates = ['deleted_at'];
 
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
+
 	  // relataion one to many
     public function Banners(){
     	return $this->hasMany(Banner::class);
